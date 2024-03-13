@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import video from './assets/video.mp4';
+import logo from './assets/logo.svg';
 import moment from 'moment';
 import 'moment/locale/es';
 
 function App() {
 
+  const options: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const date = new Date().toLocaleDateString('en-US', options);
   const [currentTime, setCurrentTime] = useState<string>(moment().format('LTS'));
 
   useEffect(() => {
@@ -17,12 +20,17 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <div className='video-container'>
-        <video src={video} autoPlay loop muted></video>
+    <div className="app">
+      <div className='banner'>
+        <div className='video-container'>
+          <video src={video} autoPlay loop muted></video>
+        </div>
+        <img className='logo' src={logo} alt="logo" />
+        <div className='date-time-container'>
+          <p className='clock'>{currentTime}</p>
+          <p className='date'>{date}</p>
+        </div>
       </div>
-      <h1 className='logo'>TimeTracker</h1>
-      <p>{currentTime}</p>
     </div>
   );
 }
