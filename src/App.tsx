@@ -26,6 +26,10 @@ function App() {
           <video src={video} autoPlay loop muted></video>
         </div>
         <img className='logo' src={logo} alt="logo" />
+        <div className="options">
+          <a className='show-tracks' href="#">Show Tracks</a>
+          <button className='btn btn-signin'>SIGN-IN</button>
+        </div>
         <div className='date-time-container'>
           <p className='clock'>{currentTime}</p>
           <p className='date'>{date}</p>

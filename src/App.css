@@ -99,3 +99,38 @@ video {
 .btn:hover {
     background: linear-gradient(to right, #f7b733, #fc4a1a);
 }
+
+.btn-signin {
+    margin: 0 50px 0 80px;
+    border: 2px solid transparent;
+    border-image: linear-gradient(to right, #76767a, #fb8351, #ffad64, #e9e2da, #add4d3) 1;
+    background: transparent;
+    transition: transform .4s ease;
+}
+
+.btn-signin:hover {
+    border-image: linear-gradient(to right, #add4d3, #e9e2da, #ffad64, #fb8351, #76767a) 1;
+    background: transparent;
+    transform: scale(1.03);
+}  
+
+.options {
+    margin-top: 40px;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    z-index: 1;
+}
+
+.show-tracks {
+    background: linear-gradient(to right, #f7b733, #fc4a1a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 18px;
+}
