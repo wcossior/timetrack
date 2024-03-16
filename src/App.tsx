@@ -30,6 +30,10 @@ function App() {
           <p className='clock'>{currentTime}</p>
           <p className='date'>{date}</p>
         </div>
+        <div className='btn-container'>
+          <button className='btn'>CHECK-IN</button>
+          <button className='btn'>CHECK-OUT</button>
+        </div>
       </div>
     </div>
   );
