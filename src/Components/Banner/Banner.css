@@ -80,3 +80,10 @@ video {
     cursor: pointer;
     font-size: 18px;
 }
+
+@media (max-width: 466px) {
+    .btn-container{
+        flex-direction: column;
+        margin-bottom: 35px;
+    }
+}

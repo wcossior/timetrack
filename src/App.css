@@ -36,3 +36,9 @@ body {
 .btn:hover {
     background: linear-gradient(to right, #f7b733, #fc4a1a);
 }
+
+@media (max-width: 466px) {
+    .btn{
+        margin: 20px 20px 0 20px;
+    }
+}
