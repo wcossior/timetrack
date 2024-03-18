@@ -4,3 +4,16 @@
     color: white;
     opacity: 0.45;
 }
+
+
+@media (max-width: 1024px) {
+    .clock{
+        font-size: 7rem;
+    }
+}
+
+@media (max-width: 512px) {
+    .clock{
+        font-size: 4.8rem;
+    }
+}

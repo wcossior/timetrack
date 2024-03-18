@@ -4,4 +4,19 @@
     font-weight: 700;
     color: white;
     opacity: 0.45;
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .date{
+        font-size: 3rem;
+    }
+
+}
+
+@media (max-width: 512px) {
+    .date{
+        font-size: 1.8rem;
+    }
+    
 }
