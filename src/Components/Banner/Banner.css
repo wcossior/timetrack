@@ -81,9 +81,33 @@ video {
     font-size: 18px;
 }
 
+.menu{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 45px;
+    margin-top: 2rem;
+    margin-right: 2.5rem;
+    display: none;    
+}
+
 @media (max-width: 466px) {
     .btn-container{
         flex-direction: column;
         margin-bottom: 35px;
+    }
+}
+
+@media (max-width: 750px) {
+    .menu{
+        display: inline;
+    }
+
+    .btn-signin{
+        display: none;
+    }
+
+    .show-tracks{
+        display: none;
     }
 }

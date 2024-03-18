@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import video from '../../assets/video.mp4';
 import logo from '../../assets/logo.svg';
+import menu from '../../assets/menu.svg';
 import './Banner.css';
 import Clock from '../Clock/Clock';
 import CurrentDate from '../CurrentDate/CurrentDate';
@@ -14,6 +15,7 @@ const Banner = () => {
                 <video src={video} autoPlay loop muted></video>
             </div>
             <img className='logo' src={logo} alt="logo" />
+            <img className='menu' src={menu} alt="menu" />
             <div className="options">
                 <a className='show-tracks' href="#">Show Tracks</a>
                 <button className='btn btn-signin'>SIGN-IN</button>
