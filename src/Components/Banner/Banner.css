@@ -58,7 +58,7 @@ video {
     border-image: linear-gradient(to right, #add4d3, #e9e2da, #ffad64, #fb8351, #76767a) 1;
     background: transparent;
     transform: scale(1.03);
-}  
+}
 
 .options {
     margin-top: 40px;
@@ -81,33 +81,98 @@ video {
     font-size: 18px;
 }
 
-.menu{
+.menu-icon {
     position: absolute;
     top: 0;
     right: 0;
     height: 45px;
     margin-top: 2rem;
     margin-right: 2.5rem;
-    display: none;    
+    display: none;
+    cursor: pointer;
+    z-index: 2;
 }
 
-@media (max-width: 466px) {
-    .btn-container{
-        flex-direction: column;
-        margin-bottom: 35px;
+.menu-container {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    opacity: 0;
+    justify-content: center;
+    padding: 40px;
+    transition: opacity .4s ease-in-out;
+}
+
+.menu {
+    position: relative;
+    color: #fb8351;
+    font-weight: 600;
+    background: white;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.show-menu {
+    opacity: 1;
+}
+
+.hide-menu {
+    opacity: 0;
+}
+
+.close {
+    position: absolute;
+    height: 30px;
+    right: -6px;
+    top: -6px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.menu-options {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.menu-options:nth-child(2) {
+    border-bottom: 1px #e9e2da solid;
+}
+
+@media (max-width: 1024px) {
+    .logo {
+        height: 115px;
     }
 }
 
 @media (max-width: 750px) {
-    .menu{
+
+    .btn-signin {
+        display: none;
+    }
+
+    .show-tracks {
+        display: none;
+    }
+
+    .menu-icon {
         display: inline;
     }
+}
 
-    .btn-signin{
-        display: none;
+@media (max-width: 466px) {
+    .btn-container {
+        flex-direction: column;
+        margin-bottom: 35px;
     }
 
-    .show-tracks{
-        display: none;
+    .logo {
+        height: 80px;
+    }
+
+    .menu-icon{
+        height: 32px;
     }
 }
+
+
+
