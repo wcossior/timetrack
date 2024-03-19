@@ -159,7 +159,7 @@ video {
     }
 }
 
-@media (max-width: 466px) {
+@media (max-width: 512px) {
     .btn-container {
         flex-direction: column;
         margin-bottom: 35px;
