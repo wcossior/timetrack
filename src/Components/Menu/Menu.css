@@ -1,0 +1,70 @@
+.menu-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 45px;
+    margin-top: 2rem;
+    margin-right: 2.5rem;
+    display: none;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.menu-container {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    opacity: 0;
+    justify-content: center;
+    padding: 40px;
+    transition: opacity .4s ease-in-out;
+}
+
+.menu {
+    position: relative;
+    color: #fb8351;
+    font-weight: 600;
+    background: white;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.close {
+    position: absolute;
+    height: 30px;
+    right: -6px;
+    top: -6px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.show-menu {
+    opacity: 1;
+}
+
+.hide-menu {
+    opacity: 0;
+}
+
+.menu-options {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.menu-options:nth-child(2) {
+    border-bottom: 1px #e9e2da solid;
+}
+
+@media (max-width: 750px) {
+
+    .menu-icon {
+        display: inline;
+    }
+}
+
+@media (max-width: 512px) {
+
+    .menu-icon{
+        height: 32px;
+    }
+}

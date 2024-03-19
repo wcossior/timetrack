@@ -4,13 +4,6 @@
     height: 100vh;
 }
 
-.video-container {
-    width: 100%;
-    height: 100%;
-    background: #333237;
-    mix-blend-mode: hard-light;
-}
-
 .logo {
     height: 140px;
     position: absolute;
@@ -18,12 +11,6 @@
     top: 0;
     margin-top: 2rem;
     margin-left: 2.5rem;
-}
-
-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 .date-time-container {
@@ -37,140 +24,16 @@ video {
     height: 100%;
 }
 
-.btn-container {
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 60px;
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-}
-
-.btn-signin {
-    margin: 0 50px 0 80px;
-    border: 2px solid transparent;
-    border-image: linear-gradient(to right, #76767a, #fb8351, #ffad64, #e9e2da, #add4d3) 1;
-    background: transparent;
-    transition: transform .4s ease;
-}
-
-.btn-signin:hover {
-    border-image: linear-gradient(to right, #add4d3, #e9e2da, #ffad64, #fb8351, #76767a) 1;
-    background: transparent;
-    transform: scale(1.03);
-}
-
-.options {
-    margin-top: 40px;
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    z-index: 1;
-}
-
-.show-tracks {
-    background: linear-gradient(to right, #f7b733, #fc4a1a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.menu-icon {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 45px;
-    margin-top: 2rem;
-    margin-right: 2.5rem;
-    display: none;
-    cursor: pointer;
-    z-index: 2;
-}
-
-.menu-container {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    opacity: 0;
-    justify-content: center;
-    padding: 40px;
-    transition: opacity .4s ease-in-out;
-}
-
-.menu {
-    position: relative;
-    color: #fb8351;
-    font-weight: 600;
-    background: white;
-    border-radius: 4px;
-    width: 100%;
-}
-
-.show-menu {
-    opacity: 1;
-}
-
-.hide-menu {
-    opacity: 0;
-}
-
-.close {
-    position: absolute;
-    height: 30px;
-    right: -6px;
-    top: -6px;
-    cursor: pointer;
-    z-index: 2;
-}
-
-.menu-options {
-    text-align: center;
-    padding: 20px 0;
-}
-
-.menu-options:nth-child(2) {
-    border-bottom: 1px #e9e2da solid;
-}
-
 @media (max-width: 1024px) {
     .logo {
         height: 115px;
     }
 }
 
-@media (max-width: 750px) {
-
-    .btn-signin {
-        display: none;
-    }
-
-    .show-tracks {
-        display: none;
-    }
-
-    .menu-icon {
-        display: inline;
-    }
-}
-
 @media (max-width: 512px) {
-    .btn-container {
-        flex-direction: column;
-        margin-bottom: 35px;
-    }
 
     .logo {
         height: 80px;
-    }
-
-    .menu-icon{
-        height: 32px;
     }
 }
 

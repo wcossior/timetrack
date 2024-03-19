@@ -1,0 +1,15 @@
+.btn-container {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+@media (max-width: 512px) {
+    .btn-container {
+        flex-direction: column;
+        margin-bottom: 35px;
+    }
+}
