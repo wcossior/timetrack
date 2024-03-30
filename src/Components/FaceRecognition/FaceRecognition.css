@@ -18,4 +18,17 @@
     color: transparent; 
 }
 
-  
+.loading{
+    position: absolute;
+    top: 0;
+    font-size: 25px;
+    color: white;
+}
+
+.close-camera {
+    position: absolute;
+    height: 30px;
+    right: 6px;
+    top: 6px;
+    cursor: pointer;
+}
