@@ -23,7 +23,7 @@ const Banner = () => {
                 </div>
                 <Check />
             </div>
-            <Message />
+            {/* <Message type="error"/> */}
         </div>
     )
 }

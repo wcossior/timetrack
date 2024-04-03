@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import "./Check.css"
-import FaceRecognition from '../FaceRecognition/FaceRecognition';
 import { useDispatch, useSelector } from 'react-redux';
 import { showCamera } from '../../redux/slices/checkSlice';
 import { RootState } from "../../redux/store";
+import FaceRecognition from '../FaceRecognition/FaceRecognition1';
 
 const Check = () => {
 

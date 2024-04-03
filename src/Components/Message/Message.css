@@ -1,15 +1,15 @@
-.success{
+.success {
     height: 75px;
 }
 
-.msg-container{
+.msg-container {
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: 1000;
 }
 
-.bg-msg{
+.bg-msg {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -25,4 +25,13 @@
     width: 100%;
     max-width: 350px;
     height: 300px;
+}
+
+.btn-error {
+    background-image: linear-gradient(to right,#29323c, #485563);
+}
+ 
+
+.btn-error:hover {
+    background-image: linear-gradient(to right,#313b47, #586879);
 }
