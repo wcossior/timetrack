@@ -3,8 +3,6 @@ import "./FaceRecognition.css";
 import { useDispatch } from 'react-redux';
 import { hideCamera } from '../../redux/slices/checkSlice';
 import close from '../../assets/close.svg';
-import chica2 from './chica2.jpeg';//AQUI ESTA MI FOTO EN JPEG
-import chica1 from './chica1.jpeg';//AQUI ESTA MI FOTO EN JPEG
 import { v4 as uuidv4 } from 'uuid';
 
 const FaceRecognition = () => {

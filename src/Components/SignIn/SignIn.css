@@ -1,0 +1,103 @@
+.signin-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(252, 5%, 21%, 0.438);
+    z-index: 6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    position: absolute;
+    width: 680px;
+    height: 780px;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+}
+
+.close-form {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.btn-snapshot {
+    position: absolute;
+    padding-inline: 25px;
+    bottom: 0;
+    z-index: 7;
+}
+
+.photo-signin {
+    position: absolute;
+    top: 150px;
+    width: 440px;
+    height: 440px;
+    object-fit: cover;
+}
+
+.selfie-container video {
+    margin-top: 150px;
+    width: 440px;
+    height: 440px;
+}
+
+.form h1 {
+    position: absolute;
+    top: 20px;
+    background: linear-gradient(to right, #f7b733, #fc4a1a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.form label {
+    position: absolute;
+    margin-top: 100px;
+    left: 120px;
+    font-size: 18px;
+}
+
+.selfie-container {
+    position: relative;
+    height: min-content;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.camera {
+    height: 30px;
+}
+
+.name-field-container {
+    position: absolute;
+    left: 120px;
+    bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 440px;
+}
+
+.name-field-container label {
+    position: relative;
+    left: 0;
+    top: 0;
+    margin-bottom: 12px;
+}
+
+.name-field-container input {
+    top: 0;
+    left: 0;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.btn-send{
+    position: absolute;
+    bottom: 20px;
+}

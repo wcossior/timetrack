@@ -7,8 +7,14 @@ import Menu from '../Menu/Menu';
 import NavMenu from '../NavMenu/NavMenu';
 import Check from '../Check/Check';
 import Message from '../Message/Message';
+import SignIn from '../SignIn/SignIn';
+import { RootState } from "../../redux/store";
+import { useDispatch, useSelector } from 'react-redux';
 
 const Banner = () => {
+
+    const formVisibility = useSelector((state: RootState) => state.signin.visible);
+
 
     return (
         <div className='center'>
@@ -23,6 +29,9 @@ const Banner = () => {
                 </div>
                 <Check />
             </div>
+            {formVisibility &&
+                <SignIn />
+            }
             {/* <Message type="error"/> */}
         </div>
     )

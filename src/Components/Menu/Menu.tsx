@@ -3,7 +3,6 @@ import './Menu.css'
 import menu from '../../assets/menu.svg';
 import close from '../../assets/close.svg';
 
-
 const Menu = () => {
 
     const [activeMenu, setActiveMenu] = useState('');
