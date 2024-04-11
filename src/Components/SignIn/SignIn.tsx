@@ -2,7 +2,6 @@ import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import './SignIn.css';
 import close from '../../assets/close.svg';
 import camera from '../../assets/camara.svg';
-import loading from '../../assets/loading.svg';
 import { useDispatch } from 'react-redux';
 import { hideForm } from '../../redux/slices/SignInSlice';
 import { v4 as uuidv4 } from 'uuid';

@@ -1,16 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import "./FaceRecognition.css";
 import { useDispatch } from 'react-redux';
-import { hideCamera } from '../../redux/slices/checkSlice';
+import { hideCamera, noIsTheCorrectSubject, setSubject, yesIsTheCorrectSubject } from '../../redux/slices/checkSlice';
 import close from '../../assets/close.svg';
+import imgDefault from '../../assets/imgDefault.svg';
+import loading from '../../assets/loading.svg';
 import { v4 as uuidv4 } from 'uuid';
+import Verifying from '../Verifying/Verifying';
 
 const FaceRecognition = () => {
-    const [selectedImage, setSelectedImage] = useState<File | null>(null);
-    const API_TOKEN = "353caa8026d941f8834cb0de010c0745";
-    const [cameraState, cameraSetState] = useState<boolean>(false);
-    const dispatch = useDispatch();
     const videoRef = useRef<HTMLVideoElement>(null);
+    const [snapshot, setSnapshotState] = useState<boolean>(false);
+    const [verifying, setVerifyingState] = useState<boolean>(false);
+    const API_TOKEN = "353caa8026d941f8834cb0de010c0745";
+    const dispatch = useDispatch();
     const imgRef = useRef<HTMLImageElement>(null);
 
     useEffect(() => {
@@ -19,17 +22,10 @@ const FaceRecognition = () => {
 
     const generateRandomName = (extension: string): string => {
         const timestamp = Date.now(); // 
-        const uuid = uuidv4(); 
+        const uuid = uuidv4();
 
         return `${timestamp}_${uuid}.${extension}`;
     }
-
-    const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.files && event.target.files.length > 0) {
-            const imageFile = event.target.files[0];
-            setSelectedImage(imageFile);
-        }
-    };
 
     const quitCamera = () => {
         dispatch(hideCamera());
@@ -41,47 +37,18 @@ const FaceRecognition = () => {
             if (videoRef.current) {
                 videoRef.current.srcObject = stream;
             }
-            cameraSetState(true);
         } catch (err) {
             console.error('Error when opening the camera:', err);
         }
-    };
+    }
 
-    const addPerson = async () => {
-        if (!selectedImage) {
-            console.error('No se ha seleccionado ninguna imagen.');
-            return;
-        }
 
-        const formData = new FormData();
-        formData.append("photos", selectedImage);
-        formData.append("name", "Alexandra");
-        formData.append("store", "1");
-        formData.append("collections", "employeesTrack");
-
-        const requestOptions: RequestInit = {
-            method: 'POST',
-            headers: new Headers({
-                "token": API_TOKEN
-            }),
-            body: formData,
-            redirect: 'follow'
-        };
-
-        try {
-            const response = await fetch("https://api.luxand.cloud/v2/person", requestOptions);
-            const data = await response.json();
-            console.log('Respuesta de Luxand API:', data);
-        } catch (error) {
-            console.error('Error al enviar la imagen a la API de Luxand:', error);
-        }
-    };
-
-    const verifyFace = async () => {
+    const searchFace = async () => {
         if (!imgRef.current) {
-            console.error('No se ha seleccionado ninguna imagen.');
+            console.error('No se ha capturado ninguna imagen.');
             return;
         }
+        setVerifyingState(true);
 
         const imagePath = imgRef.current.src;
 
@@ -94,7 +61,7 @@ const FaceRecognition = () => {
 
         var formData = new FormData();
         formData.append("photo", file);
-
+        formData.append("collections", "employeesTrack");
 
         var requestOptions: RequestInit = {
             method: 'POST',
@@ -106,15 +73,28 @@ const FaceRecognition = () => {
         };
 
         try {
-            const response = await fetch("https://api.luxand.cloud/photo/verify/fa9e2537-f201-11ee-8061-0242ac160003", requestOptions);
+            const response = await fetch("https://api.luxand.cloud/photo/search/v2", requestOptions);
             const data = await response.json();
-            console.log('Respuesta de Luxand verify API:', data);
+            if (data.length>0) {
+                if (data[0].probability > 0.95) {
+                    console.log("entreps");
+
+                    dispatch(yesIsTheCorrectSubject());
+                    dispatch(setSubject(data[0].name));
+                }
+            } else {
+                dispatch(noIsTheCorrectSubject());
+            }
+                console.log('Respuesta de Luxand verify API:', data);
+                setVerifyingState(false);
+            quitCamera();
         } catch (error) {
             console.error('Error al enviar la imagen a la API de Luxand:', error);
         }
     };
 
     const takeSnapshot = () => {
+
         if (videoRef.current) {
             const canvas = document.createElement('canvas');
             canvas.width = videoRef.current.videoWidth;
@@ -125,31 +105,35 @@ const FaceRecognition = () => {
                 const dataURL = canvas.toDataURL('image/jpeg');
                 if (imgRef.current) {
                     imgRef.current.src = dataURL;
+                    setSnapshotState(true);
                 }
             }
-            // verifyFace();
         }
     }
 
     return (
-        cameraState ?
-            <div className='recognition-container'>
-                <a>Face Recognition</a>
-                <video ref={videoRef} autoPlay muted></video>
-                {/* <input type="file" accept="image/*" onChange={handleImageUpload} /> */}
-                {/* <button className='btn' onClick={addPerson}>Agregar Persona</button> */}
+
+        <div className='recognition-container'>
+            <a>FACE RECOGNITION</a>
+            <img className='loading' src={loading} onClick={quitCamera} />
+            <video ref={videoRef} autoPlay muted></video>
+            {!snapshot ?
                 <button className='btn btn-verify' onClick={takeSnapshot}>Take a photo</button>
+                :
+                <button className='btn btn-verify' onClick={searchFace}>SEND TO VERIFY</button>
+            }
+            <div className='photo-default'>
                 <img className='photo' ref={imgRef} alt="photo" />
-                <img className='close-camera' src={close} alt="close-camera" onClick={quitCamera} />
-                {/* {selectedImage && (
-                    <div>
-                        <h3>Photo:</h3>
-                        <img className='photo' src={URL.createObjectURL(selectedImage)} alt="Imagen seleccionada" />
-                    </div>
-                )} */}
+                <img className='img-default' src={imgDefault} />
+                {snapshot &&
+                    <button className='btn btn-retake-photo' onClick={takeSnapshot}>Re-take a photo</button>
+                }
             </div>
-            :
-            <div className="loading">Hola cargando</div>
+            <img className='close-camera' src={close} alt="close-camera" onClick={quitCamera} />
+            {verifying &&
+                <Verifying />
+            }
+        </div>
     );
 };
 

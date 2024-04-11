@@ -7,6 +7,7 @@
     text-align: center;
     display: flex;
     justify-content: center;
+    background-color: #333237;
 }
 
 .recognition-container a {
@@ -16,13 +17,6 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent; 
-}
-
-.loading{
-    position: absolute;
-    top: 0;
-    font-size: 25px;
-    color: white;
 }
 
 .close-camera {
@@ -37,8 +31,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 300px;
-    height: 350px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -66,4 +60,44 @@
 .btn-verify{
    position: absolute;
    bottom: 30px;
+}
+
+.photo-default{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 350px;
+    background-color: rgba(240, 248, 255, 0.322);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-default{
+    height: 80px;
+}
+
+.loading {
+    position: absolute;
+    align-self: center;
+    height: 50px;
+    animation: spin 1.4s linear infinite;
+    z-index: -1;
+}
+
+.btn-retake-photo{
+    position: absolute;
+    align-self: flex-end;
+    bottom: -25px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }

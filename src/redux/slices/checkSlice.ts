@@ -2,10 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CheckState {
     visible: boolean,
+    isTheCorrectSubject: boolean | null,
+    subject: string,
 }
 
 const initialState: CheckState = {
-    visible: false
+    visible: false,
+    isTheCorrectSubject: null,
+    subject: ""
 };
 
 const checkSlice = createSlice({
@@ -18,9 +22,21 @@ const checkSlice = createSlice({
         hideCamera(state) {
             state.visible = false;
         },
+        cleanIsTheCorrectSubject(state) {
+            state.isTheCorrectSubject = null;
+        },
+        yesIsTheCorrectSubject(state) {
+            state.isTheCorrectSubject = true;
+        },
+        noIsTheCorrectSubject(state) {
+            state.isTheCorrectSubject = false;
+        },
+        setSubject(state, action: PayloadAction<string>) {
+            state.subject = action.payload;
+        },
     },
 });
 
-export const { showCamera, hideCamera } = checkSlice.actions;
+export const { showCamera, hideCamera, cleanIsTheCorrectSubject, yesIsTheCorrectSubject, noIsTheCorrectSubject, setSubject } = checkSlice.actions;
 
 export default checkSlice.reducer;

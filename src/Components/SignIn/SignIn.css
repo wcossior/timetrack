@@ -101,29 +101,3 @@
     position: absolute;
     bottom: 20px;
 }
-
-.loading-container {
-    position: relative;
-    margin-top: 150px;
-    width: 440px;
-    height: 440px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.loading {
-    top: 195px;
-    height: 50px;
-    animation: spin 1.4s linear infinite;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}

@@ -1,0 +1,24 @@
+.verifying-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #33323775;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-verifying {
+    height: 50px;
+    animation: spin 1.4s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

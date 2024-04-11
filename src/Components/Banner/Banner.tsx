@@ -14,7 +14,8 @@ import { useDispatch, useSelector } from 'react-redux';
 const Banner = () => {
 
     const formVisibility = useSelector((state: RootState) => state.signin.visible);
-
+    const isTheCorrectPerson = useSelector((state: RootState) => state.check.isTheCorrectSubject);
+    const person = useSelector((state: RootState) => state.check.subject);
 
     return (
         <div className='center'>
@@ -32,7 +33,12 @@ const Banner = () => {
             {formVisibility &&
                 <SignIn />
             }
-            {/* <Message type="error"/> */}
+            {isTheCorrectPerson === true &&
+                <Message type="success" name={person} />
+            }
+            {isTheCorrectPerson === false &&
+                <Message type="error" />
+            }
         </div>
     )
 }

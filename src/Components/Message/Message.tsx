@@ -2,8 +2,28 @@ import React from 'react'
 import './Message.css'
 import success from '../../assets/success.svg';
 import error from '../../assets/error.svg';
+import { useDispatch } from 'react-redux';
+import { cleanIsTheCorrectSubject } from '../../redux/slices/checkSlice';
+import { showForm } from '../../redux/slices/SignInSlice';
 
-const Message = ({ type }: { type: string }) => {
+const Message = ({ type, name }: { type: string, name?: string }) => {
+
+    const verifiedText1: string = "Welcome " + name;
+    const verifiedText2: string = "It's a pleasure to have you here.";
+    const dispatch = useDispatch();
+    const errorWhenVerifyingText1: string = "You are not in the database";
+    const errorWhenVerifyingText2: string = "Would you like to be added?";
+
+
+    const cleanPerson = () => {
+        dispatch(cleanIsTheCorrectSubject());
+    }
+    
+    const showSignInForm = () =>{
+        dispatch(cleanIsTheCorrectSubject());
+        dispatch(showForm());
+    }
+
     return (
         <div className="msg-container center">
             <div className='bg-msg'>
@@ -12,13 +32,24 @@ const Message = ({ type }: { type: string }) => {
                 <img className='success' src={type === "success" ? success : error} alt="success-icon" />
                 {
                     type === "success" ?
-                        <p>Face recognition<strong> sucessfull!</strong></p>
+                        <div>
+                            <h2>{verifiedText1}</h2>
+                            <p>{verifiedText2}</p>
+                        </div>
                         :
-                        <p>Sorry, Face recognition<strong> failed!</strong></p>
+                        <div>
+                            <h2>{errorWhenVerifyingText1}</h2>
+                            <p>{errorWhenVerifyingText2}</p>
+                        </div>
                 }
-                <button className={type === "success" ? "btn" : "btn btn-error"}>OK</button>
+                {type == "success" ?
+
+                    <button className="btn" onClick={cleanPerson}>OK</button>
+                    :
+                    <button className="btn btn-error" onClick={showSignInForm}>OK</button>
+                }
             </div>
-        </div>
+        </div >
     )
 }
 
