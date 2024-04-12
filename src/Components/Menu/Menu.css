@@ -51,6 +51,9 @@
     text-align: center;
     padding: 20px 0;
 }
+.clickable{
+    cursor: pointer;
+}
 
 .menu-options:nth-child(2) {
     border-bottom: 1px #e9e2da solid;

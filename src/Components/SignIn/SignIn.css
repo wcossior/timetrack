@@ -126,3 +126,65 @@
 .icon-fail-send {
     height: 170px;
 }
+
+
+@media (max-width: 700px) {
+
+    .form {
+        width: 100%;
+        height: 100%;
+    }
+
+    .form label {
+        left: 60px;
+        font-size: 14px;
+    }
+
+    .close-form {
+        height: 25px;
+    }
+
+    .form h1 {
+        font-size: 26px;
+    }
+
+    .camera {
+        height: 22px;
+    }
+
+    .photo-signin {
+        width: 100%;
+    }
+
+    .selfie-container video {
+        width: 100%;
+    }
+
+    .name-field-container {
+        bottom: 150px;
+        width: 80%;
+        left: 60px;
+    }
+
+    .name-field-container label {
+        left: 0;
+    }
+
+    .name-field-container input {
+        font-size: 14px;
+    }
+
+    .btn-send {
+        position: absolute;
+        bottom: 60px;
+    }
+
+
+    .icon-success-send {
+        height: 100px;
+    }
+    
+    .icon-fail-send {
+        height: 100px;
+    }
+}
