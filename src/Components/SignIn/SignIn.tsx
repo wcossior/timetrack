@@ -2,9 +2,12 @@ import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import './SignIn.css';
 import close from '../../assets/close.svg';
 import camera from '../../assets/camara.svg';
+import check from '../../assets/success.svg';
+import fail from '../../assets/error.svg';
 import { useDispatch } from 'react-redux';
 import { hideForm } from '../../redux/slices/SignInSlice';
 import { v4 as uuidv4 } from 'uuid';
+import Verifying from '../Verifying/Verifying';
 
 const SignIn = () => {
     const API_TOKEN = "353caa8026d941f8834cb0de010c0745";
@@ -12,6 +15,9 @@ const SignIn = () => {
     const imgRef = useRef<HTMLImageElement>(null);
     const dispatch = useDispatch();
     const [fullName, setFullName] = useState<string>("");
+    const [sending, setSendingState] = useState<boolean>(false);
+    const [snapShot, setSnapShotState] = useState<boolean>(false);
+    const [sended, setSendedState] = useState<boolean | null>(null);
 
     useEffect(() => {
         startVideo();
@@ -28,6 +34,7 @@ const SignIn = () => {
                 const dataURL = canvas.toDataURL('image/jpeg');
                 if (imgRef.current) {
                     imgRef.current.src = dataURL;
+                    setSnapShotState(true);
                 }
             }
         }
@@ -53,8 +60,8 @@ const SignIn = () => {
     }
 
     const generateRandomName = (extension: string): string => {
-        const timestamp = Date.now(); // 
-        const uuid = uuidv4(); 
+        const timestamp = Date.now();
+        const uuid = uuidv4();
 
         return `${timestamp}_${uuid}.${extension}`;
     }
@@ -64,7 +71,7 @@ const SignIn = () => {
             console.error('There is no image selected');
             return;
         }
-
+        setSendingState(true);
         const imagePath = imgRef.current.src;
 
         const response = await fetch(imagePath);
@@ -92,8 +99,14 @@ const SignIn = () => {
         try {
             const response = await fetch("https://api.luxand.cloud/v2/person", requestOptions);
             const data = await response.json();
+            setSendingState(false);
             console.log('Respuesta de Luxand API:', data);
+            setSendedState(true);
+            setTimeout(() => {
+                quitForm();
+            }, 2500);
         } catch (error) {
+            setSendedState(false);
             console.error('Error al enviar la imagen a la API de Luxand:', error);
         }
     };
@@ -117,11 +130,35 @@ const SignIn = () => {
                     <input type="text" name="fullName" value={fullName} onChange={captureFullName} maxLength={50} />
                 </div>
                 <img className='close-form' src={close} alt="close-form" onClick={quitForm} />
-                <button className='btn btn-send' onClick={sendForm}>
-                    Send
-                </button>
+                {fullName && snapShot ?
+                    <button className='btn btn-send' onClick={sendForm}>
+                        Send
+                    </button>
+                    :
+                    <button className='btn btn-send disabled' disabled onClick={sendForm}>
+                        Send
+                    </button>
+                }
+                {sending &&
+                    <Verifying />
+                }
+                {sended === true &&
+                    <div className="result-send">
+                        <img className='icon-success-send' src={check} />
+                    </div>
+                }
+                {sended === false &&
+                    <div className="result-send">
+                        <img className='icon-fail-send' src={fail} />
+                    </div>
+                }
+
             </div>
         </div>
+
+
+
+
 
     )
 }
