@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './Menu.css'
 import menu from '../../assets/menu.svg';
 import close from '../../assets/close.svg';

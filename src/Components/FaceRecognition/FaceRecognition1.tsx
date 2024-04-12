@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import "./FaceRecognition.css";
 import { useDispatch } from 'react-redux';
 import { hideCamera, noIsTheCorrectSubject, setSubject, yesIsTheCorrectSubject } from '../../redux/slices/checkSlice';

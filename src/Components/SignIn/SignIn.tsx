@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import './SignIn.css';
 import close from '../../assets/close.svg';
 import camera from '../../assets/camara.svg';

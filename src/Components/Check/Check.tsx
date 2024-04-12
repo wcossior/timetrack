@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import "./Check.css"
 import { useDispatch, useSelector } from 'react-redux';
 import { showCamera } from '../../redux/slices/checkSlice';

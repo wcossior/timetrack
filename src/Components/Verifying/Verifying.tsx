@@ -1,4 +1,3 @@
-import React from 'react'
 import './Verifying.css'
 import loading from '../../assets/loading.svg';
 

@@ -9,7 +9,7 @@ import Check from '../Check/Check';
 import Message from '../Message/Message';
 import SignIn from '../SignIn/SignIn';
 import { RootState } from "../../redux/store";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Banner = () => {
 
