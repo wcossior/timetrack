@@ -75,21 +75,48 @@ const FaceRecognition = () => {
         try {
             const response = await fetch("https://api.luxand.cloud/photo/search/v2", requestOptions);
             const data = await response.json();
-            if (data.length>0) {
-                if (data[0].probability > 0.95) {
-                    console.log("entreps");
+            if (data.length > 0) {
+                const id = data[0].uuid;
+                const nameSubject = data[0].name;
+                verifyFace(file, id, nameSubject);
+            }
+            console.log('Respuesta de Luxand search face API:', data);
+        } catch (error) {
+            console.error('Error al enviar datos a la API de Luxand:', error);
+        }
+    };
 
+
+    const verifyFace = async (file: File, id: string, nameSubject: string) => {
+
+        const formData = new FormData();
+        formData.append("photo", file);
+
+        var requestOptions: RequestInit = {
+            method: 'POST',
+            headers: new Headers({
+                "token": API_TOKEN
+            }),
+            body: formData,
+            redirect: 'follow'
+        };
+
+        try {
+            const response = await fetch("https://api.luxand.cloud/photo/verify/" + id, requestOptions);
+            const data = await response.json();
+            if (data) {
+                if (data.message === "verified") {
                     dispatch(yesIsTheCorrectSubject());
-                    dispatch(setSubject(data[0].name));
+                    dispatch(setSubject(nameSubject));
                 }
             } else {
                 dispatch(noIsTheCorrectSubject());
             }
-                console.log('Respuesta de Luxand verify API:', data);
-                setVerifyingState(false);
+            console.log('Respuesta de Luxand verify face API:', data);
+            setVerifyingState(false);
             quitCamera();
         } catch (error) {
-            console.error('Error al enviar la imagen a la API de Luxand:', error);
+            console.error('Error al enviar datos a la API de Luxand:', error);
         }
     };
 
