@@ -1,6 +1,7 @@
 # TimeTrack
 
-EAMS is a simple solution for managing employee check-ins and check-outs. With an intuitive interface and responsive design, this application provides a seamless experience for tracking employee attendance.
+
+TimeTrack is a simple solution for managing employee check-ins and check-outs. With an intuitive interface and responsive design, this application provides a seamless experience for tracking employee attendance.
 
 You can check it out: [HERE](https://timetrack-sand.vercel.app/)
 
