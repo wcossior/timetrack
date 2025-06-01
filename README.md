@@ -20,3 +20,4 @@ You can check it out: [HERE](https://timetrack-sand.vercel.app/)
 - TypeScript
 - HTML5
 - CSS3
+- Redux
